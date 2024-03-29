@@ -1,0 +1,56 @@
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"></script>
+<script>
+aaa=1
+aaaa=true
+x=1
+y=1
+name=prompt("あなたの名前を入力")
+mousea=false
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  textSize(10)
+  text(name,20,15)
+  if (mouseIsPressed && mouseX<401 && mouseY<401 && mouseX>-1 && mouseY>-1){
+    mousea=true
+  } else{
+    mousea=false
+  }
+  if (mousea && aaaa){
+    aaa+=x
+    aaaa=false
+  }else if(mousea==false){
+    aaaa=true
+  }
+  if (x<Math.ceil(aaa/(y*30))){
+    x+=1
+    console.log(x)
+    y+=1
+  }
+  textSize(80);
+  text(aaa-1,30,225)
+  textSize(10);
+  text(x,20,380)
+}
+function download(x,y) {
+  const blob = new Blob([x],{type:"text/plain"});
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = y;
+  link.click();
+}
+function downloadsuru(){
+  download(`${name},${aaa},kannboApp`,"score.txt")
+}
+function nameedit(){
+  name=prompt("あなたの名前を入力")
+}
+</script>
+
+
+<button onclick="downloadsuru()">スコアをダウンロード</button>
+<button onclick="nameedit()">名前変更</button><br>
