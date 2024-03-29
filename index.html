@@ -49,8 +49,15 @@ function downloadsuru(){
 function nameedit(){
   name=prompt("あなたの名前を入力")
 }
+function imagedesu(){
+  canvas=document.getElementById("defaultCanvas0")
+  console.log(canvas)
+  document.getElementById("image").href = canvas.toDataURL("image/jpeg", 0.5); // PNGなら"image/png"
+  document.getElementById("image").download = "image.jpg"
+  document.getElementById("image").textContent="リンク"
+}
 </script>
 
-
 <button onclick="downloadsuru()">スコアをダウンロード</button>
-<button onclick="nameedit()">名前変更</button><br>
+<button onclick="nameedit()">名前変更</button>
+<button onclick="imagedesu()">画像共有</button><a href="" id="image"></a><br>
